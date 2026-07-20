@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: searched
+source: https://help.attackiq.com/hc/en-us/categories/api
+docs: https://help.attackiq.com/hc/en-us/categories/api
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+  - name: PlatformToken
+    type: apiKey
+    in: header
+    header: Authorization
+    scheme_prefix: Token
+    description: >-
+      The AttackIQ Platform authenticates API requests with a per-user API token
+      passed in the Authorization request header using the Django REST Framework
+      "Token" scheme (Authorization: Token <token>). Tokens are minted in the
+      console under Administration -> API Keys with a chosen expiration; an
+      expired token is revoked and regenerated there. The token inherits the
+      permissions of the user account it belongs to.
+    token_management:
+      generate: Administration -> API Keys -> Generate
+      expiration: user-selectable
+      revoke: supported
+    sources:
+      - https://help.attackiq.com/hc/en-us/categories/api
+      - https://pypi.org/project/aiq-platform-api/
+      - https://docs.swimlane.com/connectors/attackiq
+notes: >-
+  No OpenAPI/securitySchemes are published, so this profile was searched from the
+  provider help center and the official aiq-platform-api SDK (which sends the
+  token via the ATTACKIQ_PLATFORM_API_TOKEN env var). The platform is not an
+  OAuth2/OIDC provider; there is no scope surface (token = full user permissions),
+  so no scopes/ artifact is emitted. On-prem deployments may present self-signed
+  certificates; the SDK/CLI expose insecure / custom-CA options for that case.
