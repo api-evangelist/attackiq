@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: searched
+source: https://pypi.org/project/aiq-platform-api/
+packages:
+  - language: python
+    registry: pypi
+    name: aiq-platform-api
+    version: 1.0.62
+    url: https://pypi.org/project/aiq-platform-api/
+    install: pip install aiq-platform-api
+    official: true
+    description: >-
+      Official AttackIQ Platform API tooling. Ships both an async Python SDK
+      (AttackIQClient with Scenarios / Assets / Assessments helpers) and the
+      `aiq` command-line interface. Authored by AttackIQ (rajesh.sharma@attackiq.com).
+    license: MIT
+    provides:
+      - kind: sdk
+        language: python
+        import: aiq_platform_api
+      - kind: cli
+        binary: aiq
+    env:
+      - ATTACKIQ_PLATFORM_URL
+      - ATTACKIQ_PLATFORM_API_TOKEN
+      - ATTACKIQ_PLATFORM_INSECURE
+      - ATTACKIQ_PLATFORM_CA_BUNDLE
+notes: >-
+  Package is marked Beta ("under active development, APIs subject to change").
+  The CLI can also be installed via a GitHub-hosted install.sh / install.ps1 from
+  github.com/AttackIQ/aiq-platform-api (invite-only org access). No first-party
+  JavaScript, Go, Java, .NET, Ruby, PHP or Rust client library was found on the
+  public registries (npm / Maven Central / NuGet / pkg.go.dev / RubyGems /
+  Packagist / crates.io) as of this pass.

@@ -1,0 +1,55 @@
+generated: '2026-07-18'
+method: searched
+source: https://pypi.org/project/aiq-platform-api/
+name: aiq
+description: >-
+  First-party AttackIQ Platform command-line interface, distributed inside the
+  aiq-platform-api package. Wraps the same async client the Python SDK exposes.
+binary: aiq
+package: packages/attackiq-packages.yml
+install:
+  - method: pip
+    command: pip install aiq-platform-api
+  - method: script-linux-macos
+    command: >-
+      GITHUB_TOKEN="..." sh -c 'curl -fsSL -H "Authorization: token $GITHUB_TOKEN"
+      https://raw.githubusercontent.com/AttackIQ/aiq-platform-api/main/install.sh | sh'
+    notes: Installs to ~/.local/bin (no sudo); invite-only GitHub org.
+  - method: script-windows
+    command: install.ps1 (PowerShell)
+    notes: Installs to %LOCALAPPDATA%\Programs\aiq and adds to PATH.
+configuration:
+  env:
+    - name: ATTACKIQ_PLATFORM_URL
+      description: Platform base URL, e.g. https://your-platform.attackiq.com
+    - name: ATTACKIQ_PLATFORM_API_TOKEN
+      description: API token generated under Administration -> API Keys
+    - name: ATTACKIQ_PLATFORM_INSECURE
+      description: Skip TLS verification (on-prem / self-signed); accepts 1/true/yes/on
+    - name: ATTACKIQ_PLATFORM_CA_BUNDLE
+      description: Path to a custom CA bundle (PEM) to trust
+  dotenv: true
+commands:
+  - group: assessments
+    examples:
+      - aiq assessments list
+  - group: assets
+    examples:
+      - aiq assets list
+      - aiq assets search --query "hostname"
+  - group: scenarios
+    examples:
+      - aiq scenarios get --scenario-id "abc123"
+  - group: completion
+    description: Emit shell completion for bash, zsh, fish, powershell
+    examples:
+      - source <(aiq completion zsh)
+global_flags:
+  - flag: "-k / --insecure"
+    description: Skip TLS verification (overrides ATTACKIQ_PLATFORM_INSECURE)
+  - flag: "--cacert <path>"
+    description: Verify against a custom CA bundle
+notes: >-
+  Command surface captured verbatim from the published package README (Beta).
+  Groups mirror the platform resources (assessments, assets, scenarios); the
+  full subcommand tree is discoverable via `aiq --help`.

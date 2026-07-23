@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+host: https://www.attackiq.com
+documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+notes: >-
+  No /.well-known discovery documents are published on the marketing host. A real
+  llms.txt IS published at https://www.attackiq.com/llms.txt (saved verbatim at
+  llms/attackiq-llms.txt). The tenant API host (firedrill.attackiq.com and
+  customer subdomains) is authenticated and per-tenant, so its /.well-known space
+  was not probed. No WellKnown pointer is emitted since nothing returned 200.

@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: derived
+source: >-
+  Derived from the observed API shape (Django REST Framework REST/JSON, token
+  auth, count/next/previous pagination) documented by the provider help center
+  and downstream integrations. No published OpenAPI to assert against.
+standards:
+  - id: rest-json
+    conforms: true
+    evidence: REST resources under /v1/ returning application/json
+  - id: token-auth-header
+    conforms: true
+    evidence: Authorization header, Token scheme (DRF TokenAuthentication)
+  - id: pagination-page-number
+    conforms: true
+    evidence: DRF count/next/previous/results envelope with page params
+  - id: oauth2
+    conforms: false
+    evidence: no OAuth2 flows; per-user API token only
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: DRF `detail` error body, not application/problem+json
+  - id: mitre-attack
+    conforms: true
+    evidence: >-
+      Scenarios and assessments are aligned to the MITRE ATT&CK framework
+      (AttackIQ Informed Defense Architecture / AIDA); a domain standard rather
+      than an API protocol standard.
+  - id: fhir
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+notes: >-
+  Domain conformance (MITRE ATT&CK) is a product claim, not a wire standard. No
+  independently published compliance-certification program (SOC 2 / ISO 27001 /
+  etc.) could be verified from the trust portal, so no `Compliance` pointer is
+  emitted from this file.

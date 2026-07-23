@@ -1,0 +1,57 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.swimlane.com/connectors/attackiq
+docs: https://help.attackiq.com/hc/en-us/categories/api
+api_style: REST/JSON over HTTPS (Django REST Framework)
+base_url_pattern: https://<tenant>.attackiq.com/v1/
+default_saas_host: https://firedrill.attackiq.com/v1/
+authentication:
+  ref: authentication/attackiq-authentication.yml
+  style: "apiKey header (Authorization: Token <token>)"
+versioning:
+  scheme: uri-path
+  current: v1
+  example: /v1/assessments
+pagination:
+  style: page-number (Django REST Framework default)
+  request_params:
+    - page
+    - page_size
+  response_fields:
+    - count
+    - next
+    - previous
+    - results
+  notes: >-
+    List endpoints return a DRF-style envelope with a total `count`, absolute
+    `next`/`previous` page URLs, and a `results[]` array. Follow the `next` URL
+    to page.
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key header or documented idempotent-retry contract was found
+    on the public surface. Do NOT emit an Idempotency pointer.
+error_envelope:
+  format: drf
+  notes: >-
+    Errors surface as HTTP status codes with a JSON body carrying `detail` (and
+    field-level validation maps for 400s), per Django REST Framework defaults.
+    No RFC 9457 problem+json content type is advertised.
+tls:
+  notes: >-
+    On-prem servers may present self-signed / non-standards-compliant certs; the
+    official SDK/CLI expose insecure and custom-CA-bundle modes.
+resources:
+  - assessments
+  - tests
+  - scenarios
+  - assets
+  - results
+  - connector_phase_results
+cross_links:
+  authentication: authentication/attackiq-authentication.yml
+  lifecycle: lifecycle/attackiq-lifecycle.yml
+notes: >-
+  Cross-cutting semantics searched from the provider help center and the
+  Swimlane/XSOAR integration guides that consume the platform API. Derived
+  content is limited because AttackIQ publishes no OpenAPI.

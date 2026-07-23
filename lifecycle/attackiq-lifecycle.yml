@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: searched
+source: https://status.attackiq.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://help.attackiq.com/hc/en-us/categories/api
+status_page: https://status.attackiq.com/
+trust_center: https://trust.attackiq.com/
+sdk_maturity:
+  package: aiq-platform-api
+  stage: beta
+  note: >-
+    "Under active development. APIs subject to change." per the published
+    package. No dated public REST API changelog or formal deprecation/Sunset
+    (RFC 8594) policy was found on the public surface.
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+sla:
+  url: null
+deprecated_operations: []
+notes: >-
+  A public status page (status.attackiq.com) is live. Versioning is via the
+  /v1/ URI path. No OpenAPI is published, so no operations can be flagged
+  deprecated from a spec.

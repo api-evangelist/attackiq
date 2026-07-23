@@ -1,0 +1,18 @@
+generated: '2026-07-18'
+method: searched
+probe: true
+url: https://trust.attackiq.com/
+certifications: []
+evidence:
+  - source: https://trust.attackiq.com/
+    status: 200
+    kind: trust-portal
+    note: >-
+      A dedicated trust portal is live at trust.attackiq.com (client-rendered
+      SPA, likely SafeBase/Vanta-class). The certification list is loaded via
+      JavaScript and could not be read server-side on this pass, so specific
+      named certifications (SOC 2 / ISO 27001 / etc.) are left UNVERIFIED rather
+      than asserted. Re-run with a headless fetch to enumerate certifications.
+notes: >-
+  The portal's existence is verified; its contents are not. No `Compliance`
+  pointer is emitted because no named certification could be confirmed.
