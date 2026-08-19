@@ -1,43 +1,45 @@
 generated: '2026-07-18'
 method: derived
 status: candidate
-source: >-
-  Derived from the published aiq-platform-api CLI/SDK resource surface
-  (assessments, assets, scenarios, tests, results) and the firedrill /v1/
-  endpoint paths documented by downstream integrations. No official AttackIQ MCP
-  server was found in the MCP registry, npm (@modelcontextprotocol), or the docs.
+source: Derived from the published aiq-platform-api CLI/SDK resource surface (assessments, assets, scenarios,
+  tests, results) and the firedrill /v1/ endpoint paths documented by downstream integrations. No official
+  AttackIQ MCP server was found in the MCP registry, npm (@modelcontextprotocol), or the docs.
 server:
   name: attackiq
   transport: stdio
   url: null
-notes: >-
-  AttackIQ publishes no OpenAPI, so these candidate tools are grounded in the
-  real CLI command groups and the known /v1/ REST resources rather than
-  operationIds. Treat as a starting point for a wrapper MCP server over the
-  Platform API; each tool maps to an authenticated REST call
-  (Authorization: Token). Not an official/hosted server.
+notes: 'AttackIQ publishes no OpenAPI, so these candidate tools are grounded in the real CLI command groups
+  and the known /v1/ REST resources rather than operationIds. Treat as a starting point for a wrapper
+  MCP server over the Platform API; each tool maps to an authenticated REST call (Authorization: Token).
+  Not an official/hosted server.'
 tools:
-  - name: list_assessments
-    description: List security assessments in the tenant.
-    source_operation: GET /v1/assessments
-  - name: get_assessment
-    description: Get a single assessment by id.
-    source_operation: GET /v1/assessments/{id}
-  - name: list_assets
-    description: List assets (test points / systems under test).
-    source_operation: GET /v1/assets
-  - name: search_assets
-    description: Search assets by hostname or attributes.
-    source_operation: GET /v1/assets?query=
-  - name: list_scenarios
-    description: List attack scenarios.
-    source_operation: GET /v1/scenarios
-  - name: get_scenario
-    description: Get scenario details by id.
-    source_operation: GET /v1/scenarios/{id}
-  - name: list_tests
-    description: List tests within an assessment.
-    source_operation: GET /v1/tests
-  - name: list_results
-    description: Fetch assessment / scenario execution results.
-    source_operation: GET /v1/results
+- name: list_assessments
+  description: List security assessments in the tenant.
+  source_operation: GET /v1/assessments
+- name: get_assessment
+  description: Get a single assessment by id.
+  source_operation: GET /v1/assessments/{id}
+- name: list_assets
+  description: List assets (test points / systems under test).
+  source_operation: GET /v1/assets
+- name: search_assets
+  description: Search assets by hostname or attributes.
+  source_operation: GET /v1/assets?query=
+- name: list_scenarios
+  description: List attack scenarios.
+  source_operation: GET /v1/scenarios
+- name: get_scenario
+  description: Get scenario details by id.
+  source_operation: GET /v1/scenarios/{id}
+- name: list_tests
+  description: List tests within an assessment.
+  source_operation: GET /v1/tests
+- name: list_results
+  description: Fetch assessment / scenario execution results.
+  source_operation: GET /v1/results
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census
